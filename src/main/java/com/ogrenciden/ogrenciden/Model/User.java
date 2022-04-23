@@ -1,10 +1,15 @@
 package com.ogrenciden.ogrenciden.Model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -17,18 +22,31 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="userId")
-	private Long userId;
+	Long userId;
 	
 	@Column(name = "name")
-	private String name;
+	String name;
 	
 	@Column(name = "lastName")
-	private String lastName;
+	String lastName;
 	
 	@Column(name = "email")
-	private String email;
+	String email;
 	
 	@Column(name = "password")
-	private String password;
+	String password;
+	
+	@Column(name = "universityName")
+	String universityName;
+	
+	@Column(name = "campusName") 
+	String campusName;
+	
+	@Column(name = "contactInfo")
+	String contactInfo;
+	
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "productId")
+	List<Product> products;
 
 }
