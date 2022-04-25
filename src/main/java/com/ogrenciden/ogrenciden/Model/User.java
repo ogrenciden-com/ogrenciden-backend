@@ -16,6 +16,8 @@ import lombok.Data;
 @Table(name = "users")
 public class User {
 	
+	//UserPhoto
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="userId")

@@ -1,5 +1,6 @@
 package com.ogrenciden.ogrenciden.Model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +15,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "campus")
-public class Campus {
+public class Campus{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
