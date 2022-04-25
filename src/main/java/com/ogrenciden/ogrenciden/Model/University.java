@@ -24,7 +24,5 @@ public class University {
 	@Column(name = "universityName")
 	String universityName;
 	
-	
-	
 
 }
