@@ -13,7 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+
 
 @Data
 @Entity
@@ -42,6 +46,12 @@ public class Product{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	User userId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "categoryId",nullable = false)
+	@JsonIgnore
+	Category category;
 
 }
