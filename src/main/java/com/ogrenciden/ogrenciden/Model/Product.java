@@ -4,16 +4,27 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "products")
 public class Product {
+	
+	//ProductPhoto
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +38,7 @@ public class Product {
 	BigDecimal productPrice;
 	
 	@Column(name = "cities")
-	String Cities;
+	String cities;
 	
 	@Column(name = "contactInfo")
 	Long contactInfo;
@@ -35,6 +46,10 @@ public class Product {
 	@Column(name = "productDescripton")
 	String productDescription;
 	
-	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	User user;
 
 }
