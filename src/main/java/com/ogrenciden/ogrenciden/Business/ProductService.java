@@ -27,7 +27,7 @@ public class ProductService {
 		return productRepository.findById(productId).orElse(null);
 	}
 
-	public Product updateOneProduct(Long productId, Product newProduct) {
+	public Product updateOneProduct(Long productId,Product newProduct) {
 		Optional<Product> product = productRepository.findById(productId);
 		if (product.isPresent()) {
 			Product foundProduct = product.get();
