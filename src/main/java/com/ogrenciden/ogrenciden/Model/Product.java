@@ -1,6 +1,5 @@
 package com.ogrenciden.ogrenciden.Model;
 
-
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 
@@ -49,9 +46,9 @@ public class Product{
 	@JsonIgnore
 	User userId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "categoryId",nullable = false)
-	@JsonIgnore
-	Category category;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "categoryId")
+	@JsonIgnore
+	Category categoryId;
 }
