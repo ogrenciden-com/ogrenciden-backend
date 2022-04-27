@@ -13,8 +13,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
-
 import lombok.Data;
 
 
@@ -43,7 +41,6 @@ public class Product{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId")
-	@NotNull
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	User userId;
@@ -52,6 +49,5 @@ public class Product{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoryId")
 	@JsonIgnore
-	@NotNull
 	Category categoryId;
 }
