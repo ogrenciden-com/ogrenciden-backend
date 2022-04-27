@@ -21,8 +21,6 @@ import lombok.Data;
 @Table(name = "products")
 public class Product{
 	
-	//ProductPhoto
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "productId")
@@ -39,6 +37,7 @@ public class Product{
 	
 	@Column(name = "productDescripton")
 	String productDescription;
+
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
