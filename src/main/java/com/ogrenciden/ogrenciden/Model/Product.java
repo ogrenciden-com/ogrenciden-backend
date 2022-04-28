@@ -40,14 +40,14 @@ public class Product{
 
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "userId", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	User userId;
 	
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "categoryId")
+	@JoinColumn(name = "categoryId", nullable = false)
 	@JsonIgnore
 	Category categoryId;
 }
