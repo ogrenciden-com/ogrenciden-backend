@@ -24,29 +24,22 @@ public class ProductService {
 		this.categoryService = categoryService;
 	}
 	
-	public List<Product> getAllProducts () {
+	public List<Product> getAllProducts (Optional<Long> userId) { // http://localhost:8080/products?userId=12 burdan devam
+		if (userId.isPresent()) {
+			return productRepository.findByUserId(userId.get());
+		}
+		else {
 		return productRepository.findAll();
+		}
 	}
 	
-	public Product saveOneProduct(Product newProduct) {
-		return productRepository.save(newProduct);
-	}
+	//public Product saveOneProduct(Product newProduct) {
+		//return productRepository.save(newProduct);
+//	}
 	
 	public Product getOneProduct(Long productId) {
 		return productRepository.findById(productId).orElse(null);
 	}
-
-	/*
-	 * public Product updateOneProduct(Long productId,Product newProduct) {
-	 * Optional<Product> product = productRepository.findById(productId); if
-	 * (product.isPresent()) { Product foundProduct = product.get();
-	 * foundProduct.setProductTitle(newProduct.getProductTitle());
-	 * foundProduct.setProductPrice(newProduct.getProductPrice());
-	 * foundProduct.setContactInfo(newProduct.getContactInfo());
-	 * foundProduct.setProductDescription(newProduct.getProductDescription());
-	 * productRepository.save(foundProduct); return foundProduct; } else { return
-	 * null; } }
-	 */
 
 	// --------------------------------------------------------------------------------------//
 	public Product createOneProduct(ProductCreateRequest newProductCreate) {
@@ -56,7 +49,7 @@ public class ProductService {
 			 return null;
 		 }
 		 Product toSave = new Product();
-		 toSave.setProductId(newProductCreate.getProductId());
+		// toSave.setProductId(newProductCreate.getProductId());
 		 toSave.setProductTitle(newProductCreate.getProductTitle());
 		 toSave.setProductPrice(newProductCreate.getProductPrice());
 		 toSave.setContactInfo(newProductCreate.getContactInfo());
@@ -85,6 +78,7 @@ public class ProductService {
 	public void deleteOneProductById(Long productId) {
 		productRepository.deleteById(productId);
 	}
+
 	
 	
 }

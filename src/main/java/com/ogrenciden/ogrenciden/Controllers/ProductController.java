@@ -1,6 +1,7 @@
 package com.ogrenciden.ogrenciden.Controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.ogrenciden.ogrenciden.Business.ProductService;
 import com.ogrenciden.ogrenciden.Model.Product;
@@ -26,14 +28,10 @@ public class ProductController {
 	}
 	
 	@GetMapping
-	public List<Product> getAllProducts() {
-		return productService.getAllProducts();
+	public List<Product> getAllProducts(@RequestParam Optional<Long> userId) {
+		return productService.getAllProducts(userId);
 	}
 	
-	@PostMapping("/saveProduct")
-	public Product createProduct(@RequestBody ProductCreateRequest newProductCreate) {
-		return productService.createOneProduct(newProductCreate);
-	}
 	
 	@GetMapping("/{productId}") 
 	public Product getOneProduct(@PathVariable Long productId) {
@@ -41,10 +39,11 @@ public class ProductController {
 		return productService.getOneProduct(productId);
 	}
 	
-	//@PutMapping("/{productId}")
-	//public Product updateOneProduct(@PathVariable Long productId ,@RequestBody Product newProduct) {
-		//return productService.updateOneProduct(productId,newProduct);
-	//}
+	@PostMapping("/saveProduct")
+	public Product createProduct(@RequestBody ProductCreateRequest newProductCreate) {
+		return productService.createOneProduct(newProductCreate);
+	}
+	
 	
 	@DeleteMapping("/{productId}") 
 	public void deleteOneProduct(@PathVariable Long productId) {

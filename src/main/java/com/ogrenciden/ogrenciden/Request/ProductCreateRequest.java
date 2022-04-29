@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductCreateRequest {
 
-	Long productId;
+	//Long productId;
 	String productTitle;
 	Double productPrice;
 	Long contactInfo;
