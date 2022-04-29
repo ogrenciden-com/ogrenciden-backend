@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ogrenciden.ogrenciden.Business.ProductService;
 import com.ogrenciden.ogrenciden.Model.Product;
+import com.ogrenciden.ogrenciden.Request.ProductCreateRequest;
 
 @RestController
 @RequestMapping("/products")
@@ -29,8 +30,8 @@ public class ProductController {
 	}
 	
 	@PostMapping("/saveProduct")
-	public Product createProduct(@RequestBody Product product) {
-		return productService.saveOneProduct(product);
+	public Product createProduct(@RequestBody ProductCreateRequest newProductCreate) {
+		return productService.createOneProduct(newProductCreate);
 	}
 	
 	@GetMapping("/{productId}") 

@@ -1,6 +1,6 @@
 package com.ogrenciden.ogrenciden.Model;
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +30,7 @@ public class Product{
 	String productTitle;
 	
 	@Column(name = "productPrice")
-	BigDecimal productPrice;
+	Double productPrice;
 	
 	@Column(name = "contactInfo")
 	Long contactInfo;
@@ -50,4 +50,5 @@ public class Product{
 	@JoinColumn(name = "categoryId", nullable = false)
 	@JsonIgnore
 	Category categoryId;
+
 }
