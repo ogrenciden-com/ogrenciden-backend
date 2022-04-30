@@ -27,6 +27,5 @@ public class Campus{
 	University universityId;
 	
 	@Column(name = "campusName")
-	String CampusName;
-	
+	String CampusName;	
 }

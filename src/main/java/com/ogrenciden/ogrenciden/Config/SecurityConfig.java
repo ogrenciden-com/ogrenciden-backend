@@ -15,7 +15,6 @@ import org.springframework.security.config.BeanIds;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-
 import com.ogrenciden.ogrenciden.Business.UserDetailsServiceImpl;
 import com.ogrenciden.ogrenciden.Security.JwtAuthenticationEntryPoint;
 import com.ogrenciden.ogrenciden.Security.JwtAuthenticationFilter;
@@ -87,7 +86,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    		.anyRequest().authenticated();
 	    	
 	    	httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
 	    }
-	
 }

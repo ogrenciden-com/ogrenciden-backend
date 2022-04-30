@@ -1,7 +1,6 @@
 package com.ogrenciden.ogrenciden.Business;
 
 import org.springframework.stereotype.Service;
-
 import com.ogrenciden.ogrenciden.Model.Category;
 import com.ogrenciden.ogrenciden.Repository.CategoryRepository;
 
