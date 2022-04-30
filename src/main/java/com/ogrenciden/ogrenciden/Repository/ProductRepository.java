@@ -10,8 +10,4 @@ import com.ogrenciden.ogrenciden.Model.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	List<Product> findByUserId(Long userId);
-
-
-
-
 }

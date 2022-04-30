@@ -24,7 +24,7 @@ public class ProductService {
 		this.categoryService = categoryService;
 	}
 	
-	public List<Product> getAllProducts (Optional<Long> userId) { // http://localhost:8080/products?userId=12 burdan devam
+	public List<Product> getAllProducts (Optional<Long> userId) { 
 		if (userId.isPresent()) {
 			return productRepository.findByUserId(userId.get());
 		}
@@ -33,15 +33,11 @@ public class ProductService {
 		}
 	}
 	
-	//public Product saveOneProduct(Product newProduct) {
-		//return productRepository.save(newProduct);
-//	}
-	
 	public Product getOneProduct(Long productId) {
 		return productRepository.findById(productId).orElse(null);
 	}
 
-	// --------------------------------------------------------------------------------------//
+
 	public Product createOneProduct(ProductCreateRequest newProductCreate) {
 		 User user = userService.getOneUser(newProductCreate.getUserId());
 		 Category category = categoryService.getOneCategory(newProductCreate.getCategoryId());
@@ -49,14 +45,13 @@ public class ProductService {
 			 return null;
 		 }
 		 Product toSave = new Product();
-		// toSave.setProductId(newProductCreate.getProductId());
 		 toSave.setProductTitle(newProductCreate.getProductTitle());
 		 toSave.setProductPrice(newProductCreate.getProductPrice());
 		 toSave.setContactInfo(newProductCreate.getContactInfo());
 		 toSave.setProductDescription(newProductCreate.getProductDescription());
 		 toSave.setCategoryId(category);
 		 toSave.setUserId(user);
-		return productRepository.save(toSave);
+		 return productRepository.save(toSave);
 	}	
 	
 	public Product updateOneProductById(Long productId, ProductUpdateRequest updateProduct) {	
@@ -78,7 +73,4 @@ public class ProductService {
 	public void deleteOneProductById(Long productId) {
 		productRepository.deleteById(productId);
 	}
-
-	
-	
 }
