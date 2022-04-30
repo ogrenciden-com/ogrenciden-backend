@@ -20,12 +20,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override //loadUserByUsername // loadUserByEmail
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepository.findByemail(email);
+		User user = userRepository.findByEmail(email);
 		return JwtUserDetails.create(user);
 	}
 
-	public UserDetails loadUserById(String userId) {
-		User user = userRepository.findById(userId);
+	public UserDetails loadUserById(Long userId) {
+		User user = userRepository.findById(userId).get();
 		return JwtUserDetails.create(user);
 	}
 }

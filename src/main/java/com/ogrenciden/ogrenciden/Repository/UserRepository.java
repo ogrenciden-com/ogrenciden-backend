@@ -6,8 +6,8 @@ import com.ogrenciden.ogrenciden.Model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	User findById(String userId);
+	//User findById(String userId);
 
-	User findByemail(String email);
+	User findByEmail(String email);
 
 }
